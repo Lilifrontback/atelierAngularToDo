@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Date</th>
+        <th scope="col">Description</th>
+        <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let task of tasks$ | async">
+            <td>{{ task.title }}</td>
+            <td>{{ task.createdAt | date }}</td>
+            <td>{{ task.description }}</td>
+            <td>
+                <a class="btn btn-primary" [routerLink]="['/update', task.id]">Mettre à jour</a>
+            <button class="btn btn-danger" type="button" (click)="deleteTask(task.id)">Supprimer</button>
+                </td>
+            </tr>
+    <!-- <p *ngIf="!tasks$.lenght">Pas de tâche</p> -->
+</tbody>
+</table>
